@@ -27,7 +27,8 @@ struct WelcomeView: View {
                         HStack(alignment: .center) {
                             /// If we removed the isActive state, navigation would no longer function. 'LOGIN tapped' is the only text there i.e. only print command work.
                             /// isActive:  A binding to a Boolean value that indicates whether destination is currently presented.
-                            NavigationLink(destination: CardsListView(choice: "Cards"), isActive: $isLinkActive) {
+                            /// CardsListView(choice: "Cards")
+                            NavigationLink(destination: ProfileView(feedType: .feedsInGridFormat), isActive: $isLinkActive) {
                                 Button(action: {
                                     print("LOGIN tapped")
                                     self.isLinkActive = true

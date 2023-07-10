@@ -19,12 +19,16 @@ struct ProductDetailView: View {
 }
 
 struct NativeDetailView: View {
+    @Environment(\.presentationMode) var presentation
     var body: some View {
         HStack {
             Image("myCard")
                 .resizable()
                 .frame(width: 50, height: 50)
                 .cornerRadius(25)
+                .onTapGesture {
+                    self.presentation.wrappedValue.dismiss()
+                }
             Text("Populate data in list goes 🥰😍")
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .font(.system(size: 18))
