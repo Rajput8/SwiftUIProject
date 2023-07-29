@@ -11,7 +11,7 @@ import SwiftUI
 let screenWidth: CGFloat = UIScreen.main.bounds.width
 let screenHeight: CGFloat = UIScreen.main.bounds.height
 let toolbarHeight: CGFloat = 60
-let profileHeight: CGFloat = 216
+let profileHeight: CGFloat = 701
 let tabsHeight: CGFloat = 50
 
 struct ProfileView: View {
@@ -20,7 +20,7 @@ struct ProfileView: View {
     @State var topHeaderOffset: CGFloat = 0
     @State private var selectedTabIndex: Int = .zero
     @State private var offset: CGFloat = .zero
-    
+
     var body: some View {
         VStack {
             ProfileHeader()
@@ -34,9 +34,9 @@ struct ProfileView: View {
                         Stories()
                         FeedTabs(topHeaderOffset: $topHeaderOffset,
                                  feedType: $feedType,
-                                 selectedTabIndex: $selectedTabIndex)
+                                 selectedTabIndex: $selectedTabIndex, offset: $offset)
                         FeedDetails(selectedTabIndex: $selectedTabIndex, offset: $offset)
-                        // FeedsInGridFormat()
+                        //FeedsInGridFormat()
                     }
                 }
             }

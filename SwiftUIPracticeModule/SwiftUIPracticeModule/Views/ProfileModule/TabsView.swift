@@ -31,7 +31,15 @@ struct TabsView: View {
             } //: ForEach
         } //: HStack
         .frame(width: screenWidth, height: tabsHeight)
-        .overlay(Rectangle().fill(Color.black).frame(width: tabWidth, height: 2).cornerRadius(1.5).offset(x: CGFloat(selectedTabIndex) * tabWidth), alignment: .bottomLeading)
+        .overlay(Rectangle().fill(Color.black).frame(width: tabWidth,
+                                                     height: 2).cornerRadius(1.5).offset(x: CGFloat(selectedTabIndex) * tabWidth),
+                 alignment: .bottomLeading)
         .animation(.spring(), value: selectedTabIndex)
+    }
+}
+
+struct Previews_TabsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView(feedType: .feedsInGridFormat)
     }
 }

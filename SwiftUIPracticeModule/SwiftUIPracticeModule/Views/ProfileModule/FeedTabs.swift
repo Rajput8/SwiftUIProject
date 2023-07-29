@@ -13,19 +13,19 @@ struct FeedTabs: View {
     @Binding var topHeaderOffset: CGFloat
     @Binding var feedType: FeedType
     @Binding var selectedTabIndex: Int
+    @Binding var offset: CGFloat
 
     var body: some View {
         GeometryReader { reader -> AnyView in
             let minY = reader.frame(in: .global).minY
-            let offset = minY - topHeaderOffset
+            //let offset = minY - topHeaderOffset
             return AnyView (
                 VStack(spacing: 0) {
                     TabsView(selectedTabIndex: $selectedTabIndex, feedType: $feedType)
                 } //: VStack
-                    .offset(y: offset < 0 ? -offset : 0)
             )
         }
-        .frame(height: 70)
+        .frame(height: tabsHeight)
         .zIndex(1)
     }
 }

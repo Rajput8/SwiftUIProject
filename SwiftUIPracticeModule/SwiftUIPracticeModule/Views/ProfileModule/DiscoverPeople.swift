@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct DiscoverPeople: View {
 
     let rows = [GridItem(.fixed(50))]
