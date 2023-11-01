@@ -12,17 +12,28 @@ struct CardsListView: View {
     var choice: String
     static var categoriesData = [Category]()
 
+    @State var presentSideMenu = false
+    @State var selectedSideMenuOption = 0
+
     var body: some View {
-        List {
-            ForEach(Category.preparedListData()) { section in
-                Section(section.name) {
-                    ForEach(section.products) { productData in
-                        ProductDetailView(productDetail: productData)}
-                    //.background()
+        ZStack {
+            VStack(spacing: 0) {
+                SideMenuButtonView(presentSideMenu: $presentSideMenu)
+                Divider()
+                List {
+                    ForEach(Category.preparedListData()) { section in
+                        Section(section.name) {
+                            ForEach(section.products) { productData in
+                                ProductDetailView(productDetail: productData)}
+                            //.background()
+                        }
+                    }
+                    //.listRowBackground(Color.clear)
+                    //.listRowSeparator(.hidden)
                 }
             }
-            //.listRowBackground(Color.clear)
-            //.listRowSeparator(.hidden)
+
+            SideMenu(isShowing: $presentSideMenu, content: AnyView(SideMenuView()))
         }
     }
 }

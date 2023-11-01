@@ -12,6 +12,7 @@ struct WelcomeView: View {
 
     @State var buttonText: String = ""
     @State var isLinkActive = false
+    @State var isNavigationBarHidden: Bool = true
 
     var body: some View {
         GeometryReader { parentViewRect in
@@ -28,9 +29,12 @@ struct WelcomeView: View {
                             /// If we removed the isActive state, navigation would no longer function. 'LOGIN tapped' is the only text there i.e. only print command work.
                             /// isActive:  A binding to a Boolean value that indicates whether destination is currently presented.
                             /// CardsListView(choice: "Cards")
-                            NavigationLink(destination: ProfileView(feedType: .feedsInGridFormat), isActive: $isLinkActive) {
+                            //                            NavigationLink(destination: ProfileView(feedType: .feedsInGridFormat),
+                            //                                           isActive: $isLinkActive) {
+
+                            NavigationLink(destination: MainTabbarView(),
+                                           isActive: $isLinkActive) {
                                 Button(action: {
-                                    print("LOGIN tapped")
                                     self.isLinkActive = true
                                 }) {
                                     Text("LOGIN")
@@ -95,15 +99,5 @@ struct WelcomeView: View {
 struct Previews_WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()
-    }
-}
-
-struct GradientColors {
-    static var colors: Gradient {
-        let grColors = Gradient(colors:  [Color(red: 0.369, green: 0.553, blue: 0.839),
-                                          Color(red: 0.302, green: 0.213, blue: 0.8),
-                                          Color(red: 0.765, green: 0.263, blue: 0.537),
-                                          Color(red: 0.859, green: 0.345, blue: 0.353)])
-        return grColors
     }
 }

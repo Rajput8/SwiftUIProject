@@ -13,7 +13,7 @@ struct ProfileHeader: View {
         HStack {
             Image("lock")
                 .resizable()
-                .frame(width: 15, height: 15)
+                .frame(width: 20, height: 20)
             Text("rajput_shiv8")
                 .font(.system(size: 25, weight: .bold))
             Spacer()
